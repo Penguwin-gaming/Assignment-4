@@ -2,12 +2,14 @@
  multitask and play 4 different games at once to get a high score!
  failing to earn points in a minigame for too long or reaching a fail state
  will lose a life, lose all 4 you have and its GAME OVER */
+ // sprites are made by me, kirby is a trade mark of nintendo (please don't sue me)
 Button buttonGame;
 
 int gameState;
 PImage Title;
 PImage Tutorial;
 PImage Start;
+PImage Heart;
 boolean inGame;
 int lives;
 int score;
@@ -18,11 +20,15 @@ void setup() {
   size(400, 400);
   imageMode(CENTER);
   gameState = 0;
+  // sets the amount of lives and scorefor the game
+  lives = 4;
+  score = 0;
 
+  Heart = loadImage("heart.png");
   Title = loadImage("minigame.png");
   Tutorial = loadImage("tutorial.png");
   Start = loadImage("play.png");
-  
+
   buttonGame = new Button();
 }
 
@@ -48,13 +54,34 @@ void draw() {
     rect(width/2, 0, width, height/2);
     fill(0, 25, 175);
     rect(width/2, height/2, width, height);
-    // sets the amount of lives for the game
-    lives = 4;
+
+    // calls on the functions of the button minigame
     buttonGame.display();
     buttonGame.update();
+    buttonGame.winCondition();
+
+    // displays the hearts based on the amount of lives you have
+    if (lives == 4) {
+      image(Heart, width/2, 40);
+      image(Heart, width/2, 140);
+      image(Heart, width/2, 220);
+      image(Heart, width/2, 360);
+    } else if (lives == 3) {
+      image(Heart, width/2, 40);
+      image(Heart, width/2, 140);
+      image(Heart, width/2, 220);
+    } else if (lives == 2) {
+      image(Heart, width/2, 40);
+      image(Heart, width/2, 140);
+    } else if (lives == 1) {
+      image(Heart, width/2, 40);
+    } else {
+      gameState = 3;
+    }
   } else if (gameState == 3) {
     // background screen for game over
     background(255, 0, 0);
+    println(score);
   }
 }
 
@@ -71,10 +98,16 @@ void mouseClicked() {
   println(gameState);
 }
 
-void keyPressed(){
+void keyPressed() {
   // pressing r will reset the game back to the title screen, whether you are on the tutorial screen, in game, or in game over screen
-  if(keyCode == 'R'){
+  if (keyCode == 'R') {
     gameState = 0;
     inGame = false;
+    lives = 4;
+    score = 0;
+  }
+  // the controls for the button minigame, code will run in it when space is pressed
+  if (keyCode == ' ') {
+    buttonGame.input();
   }
 }

@@ -42,14 +42,35 @@ class Button {
     fill(255, 0, 0);
     rect(0, 0, map(timer, 0, 360.0, 0, width/2), 20);
   }
-  void update() {
-    // ticks down the timer and changes the counters when the time reaches zero
-    timer = timer - 1.0;
 
+  void update() {
+    // ticks down the timer
+    timer = timer - (1.0 + (score / 100));
+  }
+
+
+  void winCondition() {
+    // checks when the timer runs out if the player has clicked the button the right amount of times and resets the timer
+    if (timer < 0 && playerPress == press) {
+      score = score + 1;
+    }
+    if (timer < 0 && playerPress != press) {
+      lives = lives - 1;
+    }
     if (timer < 0) {
       playerPress = 0;
       press = int(random(1, 9));
       timer = 360.0;
+    }
+  }
+
+
+  void input() {
+    // a function that increments the player counter when it is called
+    playerPress ++;
+
+    if (playerPress > 9) {
+      playerPress = 9;
     }
   }
 }
