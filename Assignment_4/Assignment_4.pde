@@ -2,8 +2,9 @@
  multitask and play 4 different games at once to get a high score!
  failing to earn points in a minigame for too long or reaching a fail state
  will lose a life, lose all 4 you have and its GAME OVER */
- // sprites are made by me, kirby is a trade mark of nintendo (please don't sue me)
+// sprites are made by me, kirby is a trade mark of nintendo (please don't sue me)
 Button buttonGame;
+Target targetGame;
 
 int gameState;
 PImage Title;
@@ -20,16 +21,18 @@ void setup() {
   size(400, 400);
   imageMode(CENTER);
   gameState = 0;
-  // sets the amount of lives and scorefor the game
+  // sets the amount of lives and score for the game
   lives = 4;
   score = 0;
 
+  // loads the sprites for title screen and hearts
   Heart = loadImage("heart.png");
   Title = loadImage("minigame.png");
   Tutorial = loadImage("tutorial.png");
   Start = loadImage("play.png");
 
   buttonGame = new Button();
+  targetGame = new Target();
 }
 
 void draw() {

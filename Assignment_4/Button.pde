@@ -1,6 +1,6 @@
 //button pusher requires the player to push a button a certain number of times before the timer ticks to zero
 class Button {
-  // the positions of the sprites in the minigame, and the images for them. as well as the timer
+  // the variables for the positions of the sprites in the minigame, and the images for them. as well as the timer and player pushes
   PVector button;
   PVector playerCounter;
   PVector counter;
