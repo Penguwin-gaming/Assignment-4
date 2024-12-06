@@ -62,7 +62,12 @@ void draw() {
     buttonGame.display();
     buttonGame.update();
     buttonGame.winCondition();
-
+    
+    // calls on the functions of the target minigame
+    targetGame.display();
+    targetGame.update();
+    targetGame.winCondition();
+    
     // displays the hearts based on the amount of lives you have
     if (lives == 4) {
       image(Heart, width/2, 40);
@@ -97,6 +102,9 @@ void mouseClicked() {
   if (mouseX > width/2 && mouseX < width && mouseY > height/2 && mouseY < height && inGame == false) {
     gameState = 2;
     inGame = true;
+  }
+  if(inGame == true){
+   targetGame.shoot(); 
   }
   println(gameState);
 }
