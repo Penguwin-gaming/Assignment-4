@@ -64,15 +64,16 @@ void draw() {
     buttonGame.display();
     buttonGame.update();
     buttonGame.winCondition();
-    
+
     // calls on the functions of the target minigame
     targetGame.display();
     targetGame.update();
     targetGame.winCondition();
-    
+
     // calls on the functions of the kirby minigame
     kirbyGame.display();
-    
+    kirbyGame.update();
+
     // displays the hearts based on the amount of lives you have
     if (lives == 4) {
       image(Heart, width/2, 40);
@@ -108,8 +109,8 @@ void mouseClicked() {
     gameState = 2;
     inGame = true;
   }
-  if(inGame == true){
-   targetGame.shoot(); 
+  if (inGame == true) {
+    targetGame.shoot();
   }
 }
 
@@ -124,5 +125,12 @@ void keyPressed() {
   // the controls for the button minigame, code will run in it when space is pressed
   if (keyCode == ' ' && inGame == true) {
     buttonGame.input();
+  }
+
+  if (keyCode == 'A' && inGame == true) {
+    kirbyGame.Kirby.x -= 40;
+  }
+   if (keyCode == 'D' && inGame == true) {
+    kirbyGame.Kirby.x += 40;
   }
 }
