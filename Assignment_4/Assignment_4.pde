@@ -5,6 +5,7 @@
 // sprites are made by me, kirby is a trade mark of nintendo (please don't sue me)
 Button buttonGame;
 Target targetGame;
+Kirby kirbyGame;
 
 int gameState;
 PImage Title;
@@ -33,6 +34,7 @@ void setup() {
 
   buttonGame = new Button();
   targetGame = new Target();
+  kirbyGame = new Kirby();
 }
 
 void draw() {
@@ -67,6 +69,9 @@ void draw() {
     targetGame.display();
     targetGame.update();
     targetGame.winCondition();
+    
+    // calls on the functions of the kirby minigame
+    kirbyGame.display();
     
     // displays the hearts based on the amount of lives you have
     if (lives == 4) {
@@ -106,7 +111,6 @@ void mouseClicked() {
   if(inGame == true){
    targetGame.shoot(); 
   }
-  println(gameState);
 }
 
 void keyPressed() {
@@ -118,7 +122,7 @@ void keyPressed() {
     score = 0;
   }
   // the controls for the button minigame, code will run in it when space is pressed
-  if (keyCode == ' ') {
+  if (keyCode == ' ' && inGame == true) {
     buttonGame.input();
   }
 }
