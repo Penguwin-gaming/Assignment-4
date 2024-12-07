@@ -76,11 +76,12 @@ void draw() {
     kirbyGame.display();
     kirbyGame.update();
     kirbyGame.winCondition();
-    
+
     //calls on the functions of the colour minigame
-    blueGame. display();
-    blueGame. update();
-    
+    blueGame.display();
+    blueGame.update();
+    blueGame.winCondition();
+
     // displays the hearts based on the amount of lives you have
     if (lives == 4) {
       image(Heart, width/2, 40);
@@ -129,15 +130,37 @@ void keyPressed() {
     lives = 4;
     score = 0;
   }
+
   // the controls for the button minigame, code will run in it when space is pressed
   if (keyCode == ' ' && inGame == true) {
     buttonGame.input();
   }
 
+  // the controls for the kirby minigame, moves kirby left and right
   if (keyCode == 'A' && inGame == true) {
     kirbyGame.Kirby.x -= 40;
   }
-   if (keyCode == 'D' && inGame == true) {
+  if (keyCode == 'D' && inGame == true) {
     kirbyGame.Kirby.x += 40;
+  }
+
+  // the controls for the colour minigame, if the sprite is blue then hit y, if not then hit n for a point, and vice versa
+  if (keyCode == 'Y' && inGame == true && blueGame.randomSprite % 2 == 0) {
+    score = score + 1;
+    blueGame.timer = 480.0;
+    blueGame.randomSprite = int(random(1, 8));
+  } else if (keyCode == 'Y' && inGame == true && blueGame.randomSprite % 2 != 0) {
+    lives = lives - 1;
+    blueGame.timer = 480.0;
+    blueGame.randomSprite = int(random(1, 8));
+  }
+  if (keyCode == 'N' && inGame == true && blueGame.randomSprite % 2 != 0) {
+    score = score + 1;
+    blueGame.timer = 480.0;
+    blueGame.randomSprite = int(random(1, 8));
+  } else  if (keyCode == 'N' && inGame == true && blueGame.randomSprite % 2 == 0) {
+    lives = lives - 1;
+    blueGame.timer = 480.0;
+    blueGame.randomSprite = int(random(1, 8));
   }
 }

@@ -24,7 +24,7 @@ class Kirby {
     ground = loadImage("grass.png");
     interval = 40;
     spacing = 20;
-    timer = 420.0;
+    timer = 480.0;
     speed = new PVector(0, 0.06);
     acceleration = new PVector(0, 0.01);
     grass = new PVector(width/4, 370);
@@ -43,7 +43,7 @@ class Kirby {
     image(enemy, gordo2.x, gordo2.y);
     image(tomato, maximTomato.x, maximTomato.y);
     fill(255, 0, 0);
-    rect(0, 380, map(timer, 0, 420.0, 0, width/2), 20);
+    rect(0, 380, map(timer, 0, 480.0, 0, width/2), 20);
     image(player, Kirby.x, Kirby.y);
   }
 
@@ -89,7 +89,7 @@ class Kirby {
     // checks if kirby is contacting a tomato or a gordo, and either gains a point, or loses a life and respawns the objects back at the top
     if (Kirby.y < gordo.y && Kirby.x == gordo.x) {
       lives = lives - 1;
-      timer = 420.0;
+      timer = 480.0;
       gordo = new PVector((interval * int(random(1, 6))) - spacing, 220);
       gordo2 = new PVector((interval * int(random(1, 6))) - spacing, 220);
       maximTomato = new PVector((interval * int(random(1, 6))) - spacing, 220);
@@ -97,7 +97,7 @@ class Kirby {
     }
     if (Kirby.y < gordo2.y && Kirby.x == gordo2.x) {
       lives = lives - 1;
-      timer = 420.0;
+      timer = 480.0;
       gordo = new PVector((interval * int(random(1, 6))) - spacing, 220);
       gordo2 = new PVector((interval * int(random(1, 6))) - spacing, 220);
       maximTomato = new PVector((interval * int(random(1, 6))) - spacing, 220);
@@ -105,7 +105,7 @@ class Kirby {
     }
     if (Kirby.y < maximTomato.y && Kirby.x == maximTomato.x) {
       score = score + 1;
-      timer = 420.0;
+      timer = 480.0;
       gordo = new PVector((interval * int(random(1, 6))) - spacing, 220);
       gordo2 = new PVector((interval * int(random(1, 6))) - spacing, 220);
       maximTomato = new PVector((interval * int(random(1, 6))) - spacing, 220);
@@ -113,7 +113,7 @@ class Kirby {
     }
     if (timer < 0) {
       lives = lives - 1;
-      timer = 420.0;
+      timer = 480.0;
     }
   }
 }

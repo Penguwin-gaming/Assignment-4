@@ -16,7 +16,7 @@ class Button {
     button = new PVector(100, 150);
     playerCounter = new PVector(40, 80);
     counter = new PVector(160, 80);
-    timer = 420.0;
+    timer = 480.0;
     playerPress = 0;
     press = int(random(1, 9));
 
@@ -40,7 +40,7 @@ class Button {
     image(playerSprite[playerPress], playerCounter.x, playerCounter.y);
     image(gameSprite[press], counter.x, counter.y);
     fill(255, 0, 0);
-    rect(0, 0, map(timer, 0, 420.0, 0, width/2), 20);
+    rect(0, 0, map(timer, 0, 480.0, 0, width/2), 20);
   }
 
   void update() {
@@ -60,7 +60,7 @@ class Button {
     if (timer < 0) {
       playerPress = 0;
       press = int(random(1, 9));
-      timer = 420.0;
+      timer = 480.0;
     }
   }
 
