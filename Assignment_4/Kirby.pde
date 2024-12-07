@@ -43,7 +43,7 @@ class Kirby {
     image(enemy, gordo2.x, gordo2.y);
     image(tomato, maximTomato.x, maximTomato.y);
     fill(255, 0, 0);
-    rect(0, 380, map(timer, 0, 300.0, 0, width/2), 20);
+    rect(0, 380, map(timer, 0, 420.0, 0, width/2), 20);
     image(player, Kirby.x, Kirby.y);
   }
 

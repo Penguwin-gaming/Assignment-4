@@ -40,7 +40,7 @@ class Button {
     image(playerSprite[playerPress], playerCounter.x, playerCounter.y);
     image(gameSprite[press], counter.x, counter.y);
     fill(255, 0, 0);
-    rect(0, 0, map(timer, 0, 360.0, 0, width/2), 20);
+    rect(0, 0, map(timer, 0, 420.0, 0, width/2), 20);
   }
 
   void update() {

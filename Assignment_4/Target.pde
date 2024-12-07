@@ -55,7 +55,7 @@ class Target {
     // draws the crosshair and timer
     image(cross, mouseX, mouseY);
     fill(255, 0, 0);
-    rect(width/2, height-20, map(timer, 0, 240.0, 0, width/2), 20);
+    rect(width/2, height-20, map(timer, 0, 300.0, 0, width/2), 20);
   }
 
   void update() {
