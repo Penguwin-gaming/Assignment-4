@@ -13,6 +13,7 @@ PImage Title;
 PImage Tutorial;
 PImage Start;
 PImage Heart;
+PImage tutorialPage;
 boolean inGame;
 int lives;
 int score;
@@ -32,6 +33,7 @@ void setup() {
   Title = loadImage("minigame.png");
   Tutorial = loadImage("tutorial.png");
   Start = loadImage("play.png");
+  tutorialPage = loadImage("tutorialPage.png");
 
   buttonGame = new Button();
   targetGame = new Target();
@@ -50,8 +52,9 @@ void draw() {
     image(Tutorial, 100, 290);
     image(Start, 300, 300);
   } else if (gameState == 1) {
-    // background and text for the tutorial screen
+    // background and image for the tutorial screen
     background(255);
+    image(tutorialPage, width/2, height/2);
   } else if (gameState == 2) {
     // draws the backgrounds of the minigames
     background(0, 150, 255);
@@ -103,7 +106,10 @@ void draw() {
   } else if (gameState == 3) {
     // background screen for game over
     background(255, 0, 0);
-    println(score);
+    fill(255);
+    textSize(50);
+    text("GAME OVER", 20, 100);
+    text("final score: " + score, 20, 250);
   }
 }
 
