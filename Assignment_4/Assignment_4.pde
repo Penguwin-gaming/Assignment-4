@@ -73,7 +73,8 @@ void draw() {
     // calls on the functions of the kirby minigame
     kirbyGame.display();
     kirbyGame.update();
-
+    kirbyGame.winCondition();
+    
     // displays the hearts based on the amount of lives you have
     if (lives == 4) {
       image(Heart, width/2, 40);

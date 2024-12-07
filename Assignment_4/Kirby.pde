@@ -24,12 +24,12 @@ class Kirby {
     ground = loadImage("grass.png");
     interval = 40;
     spacing = 20;
-    timer = 300.0;
+    timer = 420.0;
     speed = new PVector(0, 0.06);
     acceleration = new PVector(0, 0.01);
     grass = new PVector(width/4, 370);
     Kirby = new PVector(20, 340);
-    
+
     // initializing the positions of the gordos and tomato
     gordo = new PVector((interval * int(random(1, 6))) - spacing, 220);
     gordo2 = new PVector((interval * int(random(1, 6))) - spacing, 220);
@@ -57,33 +57,63 @@ class Kirby {
     if (maximTomato.x == gordo.x || maximTomato.x == gordo2.x) {
       maximTomato = new PVector((interval * int(random(1, 6))) - spacing, 220);
     }
-    
+
     // adds the acceleration value to speed
     speed.add(acceleration);
-    
+
     // checks if the objects fell to the bottom of the screen and respawns them, and reduces the speed back to original value
-    if (gordo.y > 360){
+    if (gordo.y > 360) {
       gordo = new PVector((interval * int(random(1, 6))) - spacing, 220);
-      speed = new PVector(0, 0.20);
+      speed = new PVector(0, 0.06);
     }
-    if (gordo2.y > 360){
+    if (gordo2.y > 360) {
       gordo2 = new PVector((interval * int(random(1, 6))) - spacing, 220);
-      speed = new PVector(0, 0.20);
+      speed = new PVector(0, 0.06);
     }
-    if (maximTomato.y > 360){
+    if (maximTomato.y > 360) {
       maximTomato = new PVector((interval * int(random(1, 6))) - spacing, 220);
-      speed = new PVector(0, 0.20);
+      speed = new PVector(0, 0.06);
     }
-    
-    if(Kirby.x < 0){
+
+    if (Kirby.x < 0) {
       Kirby.x += 40;
-    } else if(Kirby.x > width/2){
+    } else if (Kirby.x > width/2) {
       Kirby.x -= 40;
     }
+
+    // ticks down the timer
+    timer = timer - (1.0 + (score / 100));
   }
-  
-  void winCondition(){
-    
-    
+
+  void winCondition() {
+    // checks if kirby is contacting a tomato or a gordo, and either gains a point, or loses a life and respawns the objects back at the top
+    if (Kirby.y < gordo.y && Kirby.x == gordo.x) {
+      lives = lives - 1;
+      timer = 420.0;
+      gordo = new PVector((interval * int(random(1, 6))) - spacing, 220);
+      gordo2 = new PVector((interval * int(random(1, 6))) - spacing, 220);
+      maximTomato = new PVector((interval * int(random(1, 6))) - spacing, 220);
+      speed = new PVector(0, 0.06);
+    }
+    if (Kirby.y < gordo2.y && Kirby.x == gordo2.x) {
+      lives = lives - 1;
+      timer = 420.0;
+      gordo = new PVector((interval * int(random(1, 6))) - spacing, 220);
+      gordo2 = new PVector((interval * int(random(1, 6))) - spacing, 220);
+      maximTomato = new PVector((interval * int(random(1, 6))) - spacing, 220);
+      speed = new PVector(0, 0.06);
+    }
+    if (Kirby.y < maximTomato.y && Kirby.x == maximTomato.x) {
+      score = score + 1;
+      timer = 420.0;
+      gordo = new PVector((interval * int(random(1, 6))) - spacing, 220);
+      gordo2 = new PVector((interval * int(random(1, 6))) - spacing, 220);
+      maximTomato = new PVector((interval * int(random(1, 6))) - spacing, 220);
+      speed = new PVector(0, 0.06);
+    }
+    if (timer < 0) {
+      lives = lives - 1;
+      timer = 420.0;
+    }
   }
 }

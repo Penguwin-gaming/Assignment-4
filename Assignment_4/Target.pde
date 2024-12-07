@@ -15,7 +15,7 @@ class Target {
   Target() {
     // giving the variables and images their values and sprites
     positions = 240;
-    timer = 240.0;
+    timer = 300.0;
     randomChance = 2;
     // goes through the list of arrays to give the targets their x and y values
     for (int i = 0; i < 9; i++) {
@@ -67,7 +67,7 @@ class Target {
     // checks if the timer runs out. if so then they lose a life
     if (timer < 0) {
       lives = lives - 1;
-      timer = 240.0;
+      timer = 300.0;
       randomize();
     }
   }
@@ -77,7 +77,7 @@ class Target {
     for (int i = 0; i < 9; i++) {
       if (target[i] < 2 && mouseX > targetX[i] - 20 && mouseX < targetX[i] + 20 && mouseY > targetY[i] - 20 && mouseY < targetY[i] + 20) {
         score = score + 1;
-        timer = 240.0;
+        timer = 300.0;
         randomize();
       } else if (mouseX > targetX[i] - 20 && mouseX < targetX[i] + 20 && mouseY > targetY[i] - 20 && mouseY < targetY[i] + 20) {
         lives = lives - 1;

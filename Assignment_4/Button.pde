@@ -16,7 +16,7 @@ class Button {
     button = new PVector(100, 150);
     playerCounter = new PVector(40, 80);
     counter = new PVector(160, 80);
-    timer = 360.0;
+    timer = 420.0;
     playerPress = 0;
     press = int(random(1, 9));
 
@@ -60,7 +60,7 @@ class Button {
     if (timer < 0) {
       playerPress = 0;
       press = int(random(1, 9));
-      timer = 360.0;
+      timer = 420.0;
     }
   }
 
