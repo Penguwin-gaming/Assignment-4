@@ -6,6 +6,7 @@
 Button buttonGame;
 Target targetGame;
 Kirby kirbyGame;
+Blue blueGame;
 
 int gameState;
 PImage Title;
@@ -35,6 +36,7 @@ void setup() {
   buttonGame = new Button();
   targetGame = new Target();
   kirbyGame = new Kirby();
+  blueGame = new Blue();
 }
 
 void draw() {
@@ -74,6 +76,10 @@ void draw() {
     kirbyGame.display();
     kirbyGame.update();
     kirbyGame.winCondition();
+    
+    //calls on the functions of the colour minigame
+    blueGame. display();
+    blueGame. update();
     
     // displays the hearts based on the amount of lives you have
     if (lives == 4) {
